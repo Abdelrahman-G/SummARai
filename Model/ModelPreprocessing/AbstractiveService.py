@@ -4,13 +4,13 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 class AbstractiveService:
     def __init__(self):
-        self.model_path = "AraT5v2-arabic-summarizer"
+        self.model_path = "fatmaserry/AraT5v2-arabic-summarization"
         self.model = AutoModelForSeq2SeqLM.from_pretrained(self.model_path)
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
 
     """# ***Inference***"""
 
-    def generate_summary(self,text,  max_length=1024):
+    def generate_summary(self, text,  max_length=1024):
         torch.cuda.empty_cache()  # Clear GPU cache before generation
         # Tokenize input
         inputs = self.tokenizer(

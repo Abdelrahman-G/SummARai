@@ -45,7 +45,7 @@ def prompt(text):
 class SmoothingService:
     def __init__(self):
         # === API Keys and Client Setup ===
-        self.key = "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"
+        self.key = "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"
         self.current_key = self.key
         self.client = Groq(api_key=self.current_key)
         self.key_switched = False
@@ -90,12 +90,12 @@ class SmoothingService:
                     minutes = int(match.group(1))
                     seconds = float(match.group(2))
                     wait_time = minutes * 60 + seconds
-                    print(f"⏳ Rate limit exceeded. Wait time: {wait_time:.2f} seconds.")
+                    print(f" Rate limit exceeded. Wait time: {wait_time:.2f} seconds.")
                     time.sleep(wait_time)
 
                 # Handle other errors with backoff
                 wait_time = (2 ** attempt) + random.uniform(0, 1)
-                print(f"⚠️ Error: {e}. Retrying in {wait_time:.2f} seconds...")
+                print(f"️ Error: {e}. Retrying in {wait_time:.2f} seconds...")
                 time.sleep(wait_time)
 
         return "Error: Max retries exceeded."
